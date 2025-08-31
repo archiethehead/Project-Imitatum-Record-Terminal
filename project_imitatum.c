@@ -21,7 +21,7 @@ struct Record {
 struct Record* read_record  () {
 
     //Allocate memroy for the array
-    struct Record *records = malloc(65535 * sizeof(struct Record));
+    struct Record *records = malloc(65536 * sizeof(struct Record));
     if (!records) { perror("malloc failed"); return NULL; }
 
     //Open the file, and read the binary
@@ -29,7 +29,7 @@ struct Record* read_record  () {
     if (!fp) { perror("fopen failed"); free(records); return NULL; }
 
     //Allocate binaries to the array
-    size_t read = fread(records, sizeof(struct Record), 65535, fp);
+    size_t read = fread(records, sizeof(struct Record), 65536, fp);
     fclose(fp);
 
     return records;
@@ -152,7 +152,7 @@ void output_records() {
     struct Record* agent_data = read_record();
 
     //Agent outloop loop (0001 - FFFF)
-    for (int i = 1; i <= 65534; i++) {
+    for (int i = 1; i <= 65535; i++) {
         printf("    SERIAL-NUMBER: 0x%x    STATUS: %s    LOYALTY: %s\n", agent_data[i].record_num,
         agent_data[i].type == 0 ? "Imitation" : "Human    ", agent_data[i].rebelled == 0 ? "Conformed" : "Rebelled"
     );
@@ -175,7 +175,7 @@ void output_specific_record() {
     agent[strcspn(agent, "\n")] = 0; // remove newline
 
     //Linear search
-    struct Record *r = find_record(agent_data, 65535, (int)strtol(agent, NULL, 16));
+    struct Record *r = find_record(agent_data, 65536, (int)strtol(agent, NULL, 16));
     if (r){
 
         printf("\n    SERIAL-NUMBER: 0x%x    STATUS: %s    LOYALTY: %s\n", r->record_num,
@@ -196,7 +196,7 @@ void menu() {
 
     //Menu variables
     char userin[26] = "";
-    int user_perms = 0;
+    int user_perms = 1;
 
     while (1){
 

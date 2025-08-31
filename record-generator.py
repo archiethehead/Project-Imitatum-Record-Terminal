@@ -1,12 +1,12 @@
 import struct
 import random
 
-forced_records = [0x1110, 0x1111, 0x37F2, 0x601B]
+forced_records = [0x0000, 0x1110, 0x1111, 0x37F2, 0x601B]
 
 with open("records.bin", "wb") as f:
-    for i in range(1,  65536):
+    for i in range(0,  65536):
 
-        if i == 0x1110:
+        if i == 0x1110 or i == 0x0000:
             type_val = 0
         elif i in forced_records:
             type_val = 1
@@ -15,7 +15,7 @@ with open("records.bin", "wb") as f:
 
 
         if i in forced_records:
-            if i == 0x1111:
+            if i == 0x1111 or i == 0x0000:
                 rebelled = 0
             else:
                 rebelled = 1
@@ -30,6 +30,5 @@ with open("records.bin", "wb") as f:
                     rebelled = 1
                 else: 
                     rebelled = 0
-
-
+        
         f.write(struct.pack('<iii', i, type_val, rebelled))
