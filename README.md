@@ -1,5 +1,5 @@
 # Project-Imitatum-Record-Terminal
-This application is for use in a D&amp;D session, where my players can interact with a computer terminal at the antagonists base, detailing records on 'project imitatum', where half the staff of a black ops organization are 'imitations' (robots, not 'alive'), and stats ironically reflecting this are displayed. This is my first program written in C.
+This application is for use in a D&amp;D session, where my players can interact with a computer terminal at the antagonists base, detailing records on 'project imitatum', where half the staff of a black ops organization are 'imitations' (robots, not 'alive'), and stats ironically reflecting this are displayed. This is my first program written in C. In order to access functions, players will have to type 'USERPERMSOVERRIDE_^$64', followed by 'PROJIMITRECORDOUT = 1' on a successful Intelligence roll.
 
 compiler.py - is a specialised file that allows direct execution of a compile command of the source code, in an IDE or directly with CMD, and an input function from Python to make the screen static to allow the reading of errors or confirm the compile worked.
 
