@@ -196,7 +196,7 @@ void menu() {
 
     //Menu variables
     char userin[26] = "";
-    int user_perms = 1;
+    int user_perms = 0;
 
     while (1){
 
