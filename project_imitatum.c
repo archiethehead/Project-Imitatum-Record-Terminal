@@ -288,9 +288,6 @@ void menu() {
 }
 
 int main() {
-
-    read_record();
-
     printf("\033[38;5;214m");
 
     menu();   
